@@ -23,11 +23,13 @@ Assume equal sample variances (for ratio between 0.5 and 2 can assume equal) [y/
 
 For 95.00% confidence (16 DoFs), t-value is 2.120, giving mean diff of 0.70 +/- 0.23 (0.47 to 0.92)
 
+For 99.90% confidence (16 DoFs), t-value is 4.006, giving mean diff of 0.70 +/- 0.43 (0.27 to 1.12)
+
 -----------------------------------------------------------------------------------------------------
 
 For one sample version see https://github.com/steviecurran/one-sample
 
-For 99.90% confidence (16 DoFs), t-value is 4.006, giving mean diff of 0.70 +/- 0.43 (0.27 to 1.12)
+
 
 
 
