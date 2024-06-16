@@ -10,6 +10,7 @@ Data can be extracted any column in an ascii for csv files.
 E.g. Data wtih the two samples to compare? 3.15_apples.dat
 
 For NY, n = 10 mean = 3.941 SD = 0.184
+
 For LA, n = 8 mean = 3.245 SD = 0.268
 
 Level of confidence [e.g. 95, 99, 99.9% - z = 3 sigma is 99.75]? 95
