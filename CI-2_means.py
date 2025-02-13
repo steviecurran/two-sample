@@ -19,7 +19,7 @@ if form1 == "s" or form1 == "S":
     n2 = int(input("Size of sample? ")); m2 = float(input("Mean of sample? ")); s2 = float(input("SD of sample? "))
 else:
     form = str(input("Data format, csv or  dat [c/d]? "))
-
+    # ~/courses/Business_Intelligence-Udemy/Exercises/3.15_apples.dat
     if form != "d":
         os.system("ls *.csv")
     else:
