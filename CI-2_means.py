@@ -86,30 +86,19 @@ pi = np.pi
 
 con = float(input("\nLevel of confidence [e.g. 95, 99, 99.9% - z = 3 sigma is 99.75]? "))
 
+from scipy.stats import norm
+
 def z_bit(con):
-    p = 1-con/100;alpha = 0.5-(p/2) # actually alpha/2 -doing one sided
+    p = 1-con/100; alpha = 0.5-(p/2) # actually alpha/2 -doing one sided
 
     pooled_var = s1**2/n1 + s2**2/n2
     pooled_SD = pooled_var**0.5
     pooled_SE = pooled_SD*(1/n1 + 1/n2)**0.5
-
-    norm = 1/((2*pi)**0.5)
-    xi = 0;xf = 10;yi = 0  
-    npts = 1000000; # GETS UP TO 4.612 THEN REALLY SLOWS 
-    dx = (xf-xi)/npts; x = [xi];y = [yi];y_total = y; total = 0;area = 0;j =0   
-    for i in range(npts):
-        x = i*dx
-        y = norm*np.exp(-0.5*(x**2))
-        while(total < alpha):
-            y_total = norm*np.exp(-0.5*((j*dx)**2))
-            area =y_total*dx
-
-            total = total + area
-            j = j+1
-
-        Z = dx*j
-        CI = Z*pooled_SD
-    print("\nFor %1.5f %% confidence, z-value is %1.3f [code limit z = 4.612, p < 4e-6], \n  giving  mean diff of %1.2f +/- %1.2f (%1.2f to %1.2f)" %(con,Z,m,CI,m-CI,m+CI))
+    
+    Z = norm.ppf(1-p/2,loc=0,scale=1) # AGREES WITH ~/C/stats/Z-value TO ~ 1e-15 (8 sigma)
+        
+    CI = Z*pooled_SD
+    print("\nFor %1.5f %% confidence, z-value is %1.3f, \n  giving  mean diff of %1.2f +/- %1.2f (%1.2f to %1.2f)" %(con,Z,m,CI,m-CI,m+CI))
 
 def t_bit(con):
     p = 1-con/100;alpha = 0.5-(p/2) 
@@ -138,29 +127,25 @@ def t_bit(con):
         pooled_SE = pooled_SD*(1/n1 + 1/n2)**0.5; #print(pooled_SD,pooled_SE) #OKAY SO FAR
 
     else:
-        #print(" not between 0.5 and 2 so cannot assume same population variances"); 
-        # "Apples and Oranges" in Business_Intelligence-Udemy
-        #dof = (s1**2/n1 + s2**2/n2)/((s1/n1)**2/(n1-2) + s2**2/n2) # FROM NOTES
-        #https://stats.libretexts.org/Bookshelves/Introductory_Statistics/Statistics_with_Technology_2e_(Kozak)/09\%3A_Two-Sample_Interference/9.03%3A_Independent_Samples_for_Two_Means} GIVES
         A = s1**2/n1; B =  s2**2/n2
         dof = (A+B)**2/(A**2/(n1-1) + B**2/(n2-1))
         
-        pooled_SE = (s1**2/n1 + s2**2/n2)**0.5;# print(A,B,dof,pooled_SE)
+        pooled_SE = (s1**2/n1 + s2**2/n2)**0.5;
         
     n = dof+1
     gamma_num = gamma_f(float(n)/2)
     gamma_den = gamma_f(float(dof)/2)
-    norm =  gamma_num/(((np.pi*dof)**0.5)*gamma_den)
-    #print("For %d dof, gamma_num = %1.5f, gamma_den = %1.5f (xf = %1.0f ratio = %1.3f norm = %1.3f)" %(dof,gamma_num,gamma_den, xf,gamma_num/gamma_den,norm))
+    stand =  gamma_num/(((np.pi*dof)**0.5)*gamma_den)
+    #print("For %d dof, gamma_num = %1.5f, gamma_den = %1.5f (xf = %1.0f ratio = %1.3f stand = %1.3f)" %(dof,gamma_num,gamma_den, xf,gamma_num/gamma_den,norm))
          
     npts = 100000; 
-    xf = 5;x = [xi]; y = [yi]; total =0;y_total = 0; total = 0; area = 0; j =0
+    xf = 5;x = [xi];yy = [yi]; total =0;y_total = 0; total = 0; area = 0; j =0
     dx = (xf-xi)/npts
     for i in range(npts):
         x = i*dx
-        y = norm*(1+ x**2/dof)**float(-n/2)
+        y = stand*(1+ x**2/dof)**float(-n/2)
         while(total < alpha):
-            y_total = norm*(1+ (j*dx)**2/dof)**float(-n/2)
+            y_total = stand*(1+ (j*dx)**2/dof)**float(-n/2)
             area = y_total*dx
             total = total + area; 
             j = j+1
