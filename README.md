@@ -1,5 +1,4 @@
-# two-sample
-Two sample test 
+# Two sample test 
 
 Python code to give the confidence interval for two sample test.
 
