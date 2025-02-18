@@ -10,7 +10,7 @@ from scipy import stats
 print("********************************************************************************")
 print("For independent samples - if using dependent samples (the difference)\n e.g. before/after, husband/wife, SAT/course accepetance, use CI.py")
 print("*******************************************************************************")
-form1 = str(input("\nInputing full data or summary [f/s]? "))
+form1 = str(input("\nInputing full data or summary (n,mean,SD) [f/s]? "))
 if form1 == "s" or form1 == "S": 
     print("This will test the two data sets from the summarised data - for input data use CI-t-2_means.py")
     print("Sample 1...")
@@ -19,21 +19,14 @@ if form1 == "s" or form1 == "S":
     n2 = int(input("Size of sample? ")); m2 = float(input("Mean of sample? ")); s2 = float(input("SD of sample? "))
 else:
     form = str(input("Data format, csv or  dat [c/d]? "))
-    # ~/courses/Business_Intelligence-Udemy/Exercises/3.15_apples.dat
     if form != "d":
         os.system("ls *.csv")
     else:
         os.system("ls *.dat")
 
-    infile = str(input("Data wtih the two samples to compare? "))
+    infile = str(input("Data wtih the two samples to compare [e.g. 3.15_apples.dat]? "))
     os.system("head %s" %(infile))
     
-    '''
-    if form != "d":
-        df = pd.read_csv(infile,comment='#')
-    else:
-        df = pd.read_csv(infile,delim_whitespace=True,comment='#')
-    '''
     hq = str(input("\nIs there a header [y/n]? " ))
 
     if form != "d":
@@ -58,25 +51,23 @@ else:
     if zeroes == "y" or zeroes == "Y":
         df = df.replace(0, np.nan)
 
-    print(df)
-    col1 = df.columns[0]; col2 = df.columns[1];  #print(col1,col2)
+    #print(df)
+    col1 = df.columns[0]; col2 = df.columns[1];  
     nans1 = df[df[col1] != df[col1]]
     nans2 = df[df[col2] != df[col2]] 
     #import statistics as stats
     m1 = np.mean(df[col1]); n1 = len(df[col1]) - len(nans1);
-    s1 = np.std(df[col1]) * (float(n1)/(n1-1))**0.5; 
+    s1 = np.std(df[col1],ddof=1)
     SE1 = s1/(float(n1)**0.5) # SAMPLE SD
 
     m2 = np.mean(df[col2]); n2 = len(df[col2])-len(nans2); #-nans
-    s2 = np.std(df[col2]) * (float(n2)/(n2-1))**0.5
+    s2 = np.std(df[col2],ddof=1) 
     SE2 = s2/(float(n2)**0.5)
 
     print("For %s -  n = %d, mean = %1.3f, SD = %1.3f [sample]" %(col1,n1,m1,s1)) 
     print("For %s -  n = %d, mean = %1.3f, SD = %1.3f [sample]" %(col2,n2,m2,s2))
 
     x = df[col1]; y = df[col2]; print(x,y)
-    #t,p_t = stats.ttest_ind(x,y);#The bug is in line 3885, in file scipy/scipy/stats/stats.py 
-    #t,p_t = stats.ttest_ind(df.dropna()[col1], df.dropna()[col2],equal_var=True)
     t,p_t = stats.ttest_ind(df.dropna()[col1], df.dropna()[col2],equal_var=False)
     ks = stats.kstest(x,y); p_ks = ks[1]
     print("t-test (BUGGY WITH NaN) gives p = %1.3f and KS gives p = %1.3e of being drawn from same population"%(p_t,p_ks))
@@ -119,8 +110,6 @@ def t_bit(con):
     equ = str(input("Assume equal sample variances (for ratio between 0.5 and 2 can assume equal) [y/n]? "))
 
     if equ == "y" or equ == "Y":
-    #if var_ratio >= 0.5 and var_ratio >= 0.5:
-        #print(" which is between 0.5 and 2 so can assume same population variances")
         dof = n1 + n2 -2
         pooled_var = ((n1 - 1)*s1**2 + (n2 - 1)*s2**2)/(n1 + n2 -2)
         pooled_SD = pooled_var**0.5
@@ -136,7 +125,6 @@ def t_bit(con):
     gamma_num = gamma_f(float(n)/2)
     gamma_den = gamma_f(float(dof)/2)
     stand =  gamma_num/(((np.pi*dof)**0.5)*gamma_den)
-    #print("For %d dof, gamma_num = %1.5f, gamma_den = %1.5f (xf = %1.0f ratio = %1.3f stand = %1.3f)" %(dof,gamma_num,gamma_den, xf,gamma_num/gamma_den,norm))
          
     npts = 100000; 
     xf = 5;x = [xi];yy = [yi]; total =0;y_total = 0; total = 0; area = 0; j =0
