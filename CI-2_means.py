@@ -94,7 +94,7 @@ def z_bit(con):
 def t_bit(con):
     p = 1-con/100;alpha = 0.5-(p/2) 
     npts = 100000
-    xi = 0.0; yi = 0;xf = 100; # SHOULD BE INFINITY
+    xi = 0.0; yi = 0;xf = 100; 
     def gamma_f(value):
         x = [xi]; y = [yi]; gamma =0
         for i in range(1,npts):
