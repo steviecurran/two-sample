@@ -2,7 +2,7 @@
 
 Python code to give the confidence interval for two sample test.
 
-Uses z and t-distributions, without the need of look-up tables
+Uses z and t-distributions, without the need of look-up tables.
 
 Data can be extracted any column in an ascii for csv files.
 
