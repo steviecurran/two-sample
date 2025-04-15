@@ -25,6 +25,11 @@ else:
         os.system("ls *.dat")
 
     infile = str(input("Data wtih the two samples to compare [e.g. 3.15_apples.dat]? "))
+    check_file = os.path.isfile(infile)
+    while check_file == False:
+        infile = str(input("Data wtih the two samples to compare [e.g. 3.15_apples.dat]? "))
+        check_file = os.path.isfile(infile)
+    
     os.system("head %s" %(infile))
     
     hq = str(input("\nIs there a header [y/n]? " ))
@@ -36,9 +41,9 @@ else:
             df = pd.read_csv(infile,comment='#')
     else:
         if hq == "n":
-            df = pd.read_csv(infile,delim_whitespace=True,header=None,comment='#')
+            df = pd.read_csv(infile,sep='\s+',header=None,comment='#')
         else:
-            df = pd.read_csv(infile,delim_whitespace=True,comment='#')
+            df = pd.read_csv(infile,sep='\s+',comment='#')
         
     tran = str(input("Need to tranpose [y/n]? " ))
     if tran == "y" or tran == "Y":
