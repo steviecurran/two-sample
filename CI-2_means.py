@@ -24,10 +24,10 @@ else:
     else:
         os.system("ls *.dat")
 
-    infile = str(input("Data wtih the two samples to compare [e.g. 3.15_apples.dat]? "))
+    infile = str(input("Data with the two samples to compare [e.g. 3.15_apples.dat]? "))
     check_file = os.path.isfile(infile)
     while check_file == False:
-        infile = str(input("Data wtih the two samples to compare [e.g. 3.15_apples.dat]? "))
+        infile = str(input("Data with the two samples to compare [e.g. 3.15_apples.dat]? "))
         check_file = os.path.isfile(infile)
     
     os.system("head %s" %(infile))
