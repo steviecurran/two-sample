@@ -52,7 +52,7 @@ else:
         df= df[1:]
         
     df = df.replace('NaN', np.nan) # AS STRING
-    zeroes = str(input("Replace 0s with Nans [y/n]? " ))
+    zeroes = str(input("Replace 0s or blanks with Nans [y/n]? " ))
     if zeroes == "y" or zeroes == "Y":
         df = df.replace(0, np.nan)
 
