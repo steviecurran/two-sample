@@ -4,7 +4,7 @@ Python code to give the confidence interval for two sample test.
 Uses z and t-distributions, without the need of look-up tables.
 Data can be extracted any column in an ascii or csv file.
 
-Can be run directly on [https://www.kaggle.com/code/steviemooncat/two-sample-test](here)
+Can be run directly ![https://www.kaggle.com/code/steviemooncat/two-sample-test](here)
 
 E.g. Data with the two samples to compare? 3.15_apples.dat
 
