@@ -6,7 +6,7 @@ Data can be extracted any column in an ascii or csv file.
 
 Can be run directly on [https://www.kaggle.com/code/steviemooncat/two-sample-test](here)
 
-E.g. Data wtih the two samples to compare? 3.15_apples.dat
+E.g. Data with the two samples to compare? 3.15_apples.dat
 
 For NY -  n = 10, mean = 3.941, SD = 0.184 [sample]
 
