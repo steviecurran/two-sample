@@ -1,35 +1,49 @@
-# Two sample test 
+## A/B Testing Toolkit: Comparing Two Means
 
-Python code to give the confidence interval for two sample test.
-Uses z and t-distributions, without the need of look-up tables.
-Data can be extracted from any column in an ascii or csv file.
+In A/B testing he goal is to determine whether an observed difference between groups is statistically significant and practically meaningful, as commonly required in product experiments and business decision-making.
 
-Can be run directly [here](https://www.kaggle.com/code/steviemooncat/two-sample-test)
+The notebook, *CI-2_means.ipynb*, compares two groups using confidence intervals and statistical testing, without lengthy manual calculations and distribution tables which can lead to errors.
 
-E.g. Data with the two samples to compare? 3.15_apples.dat
+The notebook is interactive and has the options to:
 
-For NY -  n = 10, mean = 3.941, SD = 0.184 [sample]
+- Input the full dataset  in .csv and .dat format or input the means and standard deviations directly
 
-For LA -  n = 8, mean = 3.245, SD = 0.268 [sample]
+- For the full data option, plot a histogram showing the distributions of the two classes 
 
-Level of confidence [e.g. 95, 99, 99.9% - z = 3 sigma is 99.75]? 95
+- Adjust the confidence levels from the default 95%, offering more stringest testing
 
-At least one sample size < 30 so using t-value
+- Run a one or two tailed test
 
-Variance ratio is 0.47,
+- Change the t- to z-statistic threshold from the default n = 30
 
-Assume equal sample variances (for ratio between 0.5 and 2 can assume equal) [y/n]? y
+- Switch between equal and inequal variances
+ 
+**Example 1: Raw data of a small sample**
 
-For 95.00% confidence (16 DoFs), t-value is 2.120, giving mean diff of 0.70 +/- 0.23 (0.47 to 0.92)
+The file *Mg_levels.dat* contains the levels of magnesium in a sample of people before and after taking a supplement. We wish to test the he null hypothesis is that the supplemnt does increase their magnesium levels
 
-For 99.90% confidence (16 DoFs), t-value is 4.006, giving mean diff of 0.70 +/- 0.43 (0.27 to 1.12)
+![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/Mg_1.png)
 
------------------------------------------------------------------------------------------------------
+![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/Mg_histo.png
+)
 
-For one sample version see [https://github.com/steviecurran/one-sample](https://github.com/steviecurran/one-sample)
+![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/Mg_results.png)
 
+So at 95% confidence we can reject the null hypothesis that the supplments do not increase the patient's magnesium levels.
 
+Using the condifence level dropdown it is straightforward to show that the null hypothesis cannot be rjected with 99% confidence.
 
+**Example 2: Large sample test**
 
+We can use the medical data before to demonstrate the toolkit on large samples and by inputting the summary.
 
+![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/medical_large.png)
 
+For example *systolic blood pressure*
+
+![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/bp_results.png)
+
+Here *Men* have been entered as Sample 1 and *Women* as Sample 2.
+
+So although the means are only about 1/3 of standard deviation apart, we are 95% confident that men have  higher systolic blood pressure.  This holds above 99.999% confidence.
+ 
