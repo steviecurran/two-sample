@@ -20,7 +20,7 @@ The notebook is interactive and has the option to:
  
 **Example 1: Raw data of a small sample**
 
-The file *Mg_levels.dat* contains the levels of magnesium in a sample of people before and after taking a supplement. We wish to test the null hypothesis that the supplement does not increase their magnesium levels of the patients
+The file *Mg_levels.dat* contains the levels of magnesium in a sample of people before and after taking a supplement. We wish to test the null hypothesis that the supplement does not increase the magnesium levels of the patients
 
 ![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/Mg_1.png)
 
