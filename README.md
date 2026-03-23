@@ -10,7 +10,7 @@ The notebook is interactive and has the option to:
 
 - For the full data option, plot a histogram showing the distributions of the two classes 
 
-- Adjust the confidence levels from the default 95%, offering more stringest testing
+- Adjust the confidence levels from the default 95%, offering more stringent testing
 
 - Run a one or two tailed test
 
@@ -31,7 +31,7 @@ The file *Mg_levels.dat* contains the levels of magnesium in a sample of people 
 
 So at 95% confidence we can reject the null hypothesis that the supplments do not increase the patient's magnesium levels.
 
-Using the condifence level dropdown it is straightforward to show that the null hypothesis cannot be rjected with 99% confidence.
+Using the condifence level dropdown it is straightforward to show that the null hypothesis cannot be rejected with 99% confidence.
 
 **Example 2: Large sample test**
 
