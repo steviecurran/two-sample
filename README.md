@@ -35,7 +35,7 @@ Using the condifence level dropdown it is straightforward to show that the null 
 
 **Example 2: Large sample test**
 
-We can use the medical data before to demonstrate the toolkit on large samples and by inputting the summary.
+We can use the medical data below to demonstrate the toolkit on large samples and by inputting the summary.
 
 ![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/medical_large.png)
 
