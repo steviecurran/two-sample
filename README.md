@@ -39,7 +39,7 @@ We can use the medical data below to demonstrate the toolkit on a large sample w
 
 ![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/medical_large.png)
 
-For example *systolic blood pressure*
+For example, for the *systolic blood pressure*
 
 ![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/bp_results.png)
 
