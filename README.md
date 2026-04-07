@@ -29,7 +29,7 @@ The file *Mg_levels.dat* contains the levels of magnesium in a sample of people 
 
 ![](https://raw.githubusercontent.com/steviecurran/two-sample/refs/heads/main/Mg_results.png)
 
-So at 95% confidence we can reject the null hypothesis that the supplments do not increase the patient's magnesium levels.
+So at 95% confidence we can reject the null hypothesis that the supplements do not increase the patient's magnesium levels.
 
 Using the condifence level dropdown it is straightforward to show that the null hypothesis cannot be rejected with 99% confidence.
 
