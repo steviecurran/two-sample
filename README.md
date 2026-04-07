@@ -4,7 +4,7 @@ In A/B testing he goal is to determine whether an observed difference between gr
 
 The notebook, *CI-2_means.ipynb*, compares two groups using confidence intervals and statistical testing, without lengthy manual calculations and distribution tables which can lead to errors.
 
-The notebook is interactive and has the option to:
+The notebook is interactive and includes options to:
 
 - Input the full dataset  in .csv and .dat format or input the means and standard deviations directly
 
