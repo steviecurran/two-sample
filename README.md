@@ -1,6 +1,7 @@
 ## A/B Testing Toolkit: Comparing Two Means
 
-In A/B testing he goal is to determine whether an observed difference between groups is statistically significant and practically meaningful, as commonly required in product experiments and business decision-making.
+Many teams run experiments but struggle with statistical validity and decision-making under uncertainty. This toolkit provides the means to 
+determine whether an observed difference between groups is statistically significant and practically meaningful, as commonly required in product experiments and business decision-making.
 
 The notebook, *CI-2_means.ipynb*, compares two groups using confidence intervals and statistical testing, without lengthy manual calculations and distribution tables which can lead to errors.
 
